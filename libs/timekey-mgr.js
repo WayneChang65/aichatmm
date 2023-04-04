@@ -2,7 +2,7 @@
 const aryUsrKey = [];
 const DEBUG = true; 	// Debug，show所有訊息
 const RUNTEST = false;	// 執行測試程式，這個要單獨run timekey-mgr.js
-const refreshTime = DEBUG ? 30 : 60 * 3; // Debug是30秒，非Debug是5分鐘
+const refreshTime = RUNTEST ? 30 : 60 * 3; // Debug是30秒，非Debug是5分鐘
 
 // 效用說明：
 // 代入userId後，如果是新的使用者，會拿不到key，但是接下來一個時間(5min)內都可以拿到key。
