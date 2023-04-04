@@ -1,0 +1,17 @@
+{
+  "name": "aichatmm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@waynechang65/fml-consolelog": "^1.1.4",
+    "discord.js": "^14.9.0",
+    "djs-commander": "^0.0.44",
+    "openai": "^3.2.1"
+  }
+}
