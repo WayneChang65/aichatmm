@@ -1,13 +1,13 @@
 {
   "name": "aichatmm",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Wayne Chang",
+  "license": "MIT",
   "dependencies": {
     "@waynechang65/fml-consolelog": "^1.1.4",
     "discord.js": "^14.9.0",

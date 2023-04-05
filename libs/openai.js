@@ -38,7 +38,7 @@ async function _gpt35Response(currentMsg) {
 
 	try {
 		let prevMessages = await currentMsg.channel.messages.fetch({
-			limit: 10,
+			limit: 50,
 		});
 		prevMessages.reverse();
 		//console.log(prevMessages);
