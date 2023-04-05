@@ -13,7 +13,6 @@ async function _gpt3Response(currentMsg) {
 	const ask = currentMsg.content.slice(3);
 	console.log(ask);
 	try {
-		await currentMsg.channel.sendTyping();
 		const response = await openai.createCompletion({
 			model: 'text-davinci-003',
 			prompt: ask,
@@ -34,15 +33,10 @@ async function _gpt3Response(currentMsg) {
 // })();
 
 async function _gpt35Response(currentMsg) {
-	let conversationLog = [
-		//{ role: 'system', content: '你是一個機器人，請用繁體中文進行回答。' },
-	];
-
+	let conversationLog = [];
 	const usrKey = timekeyMgr.getKey(currentMsg.author.id);
 
 	try {
-		await currentMsg.channel.sendTyping();
-
 		let prevMessages = await currentMsg.channel.messages.fetch({
 			limit: 10,
 		});
@@ -50,10 +44,7 @@ async function _gpt35Response(currentMsg) {
 		//console.log(prevMessages);
 
 		prevMessages.forEach((msg) => {
-			if (
-				msg.content.startsWith('ai ') &&
-				msg.author.id === currentMsg.author.id
-			) {
+			if (msg.content.startsWith('ai ') && msg.author.id === currentMsg.author.id) {
 				conversationLog.push({
 					role: 'user',
 					content: msg.content.slice(3),
@@ -62,11 +53,8 @@ async function _gpt35Response(currentMsg) {
 		});
 
 		console.log(conversationLog);
-		let conversationLog_afterTimekey = [
-			{ role: 'system', content: '你是一個機器人，請用繁體中文進行回答。' },
-		];
-		//for (let i = conversationLog.length; i > conversationLog.length - usrKey.count; i--) {
-		for (let i = conversationLog.length - usrKey.count; i < conversationLog.length; i++) {	
+		let conversationLog_afterTimekey = [{ role: 'system', content: '你是一個機器人，請用繁體中文進行回答。' }];
+		for (let i = conversationLog.length - usrKey.count; i < conversationLog.length; i++) {
 			conversationLog_afterTimekey.push(conversationLog[i]);
 		}
 		console.log(conversationLog_afterTimekey);
@@ -89,13 +77,9 @@ async function _gpt35Response(currentMsg) {
 }
 
 async function _gpt35ResponseSimple(currentMsg) {
-	let conversationLog = [
-		{ role: 'user', content: currentMsg.content.slice(4) },
-	];
+	let conversationLog = [{ role: 'user', content: currentMsg.content.slice(4) }];
 
 	try {
-		await currentMsg.channel.sendTyping();
-
 		console.log(conversationLog);
 
 		const response = await openai
